@@ -1,5 +1,7 @@
 This is the code for paper 'A Comprehensive Framework for Out-of-Distribution Detection and Open-Set Recognition in SAR Targets'.
-This codebase is developed using ood_coverage https://github.com/BierOne/ood_coverage.git.
+
+The codebase is developed using ood_coverage https://github.com/BierOne/ood_coverage.git.
+
 First step:
 sh scripts/ood/vos/mstar_train_vos.sh
 
