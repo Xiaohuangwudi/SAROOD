@@ -1,0 +1,33 @@
+dataset:
+  name: mstar
+  num_classes: 10
+  pre_size: 64
+  image_size: 64
+
+  interpolation: bilinear
+  normalization_type: mstar
+
+  num_workers: '@{num_workers}'
+  num_gpus: '@{num_gpus}'
+  num_machines: '@{num_machines}'
+
+  split_names: [train, val, test]
+
+  train:
+    dataset_class: ImglistDataset
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/mstar/train_mstar.txt
+    batch_size: 12
+    shuffle: True
+  val:
+    dataset_class: ImglistDataset
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/mstar/val_mstar.txt
+    batch_size: 12
+    shuffle: False
+  test:
+    dataset_class: ImglistDataset
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/mstar/test_mstar.txt
+    batch_size: 12
+    shuffle: False

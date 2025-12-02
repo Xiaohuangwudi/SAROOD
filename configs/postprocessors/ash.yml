@@ -1,0 +1,7 @@
+postprocessor:
+  name: ash
+  APS_mode: True
+  postprocessor_args:
+    percentile: 0.8
+  postprocessor_sweep:
+    percentile_list: [90, 70, 60]

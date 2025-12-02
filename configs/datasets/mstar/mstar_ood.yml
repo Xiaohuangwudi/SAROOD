@@ -1,0 +1,29 @@
+ood_dataset:
+  name: mstar_ood
+  num_classes: 10
+
+  num_workers: '@{num_workers}'
+  num_gpus: '@{num_gpus}'
+  num_machines: '@{num_machines}'
+
+  dataset_class: ImglistDataset
+  batch_size: 12
+  shuffle: False
+
+  split_names: [val, nearood, farood]
+  val:
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/mstar/test_ship.txt
+  nearood:
+    datasets: [SAMPLE]
+    SAMPLE:
+      data_dir: ./data/images_classic/
+      imglist_pth: ./data/benchmark_imglist/mstar/test_sample.txt
+  farood:
+    datasets: [AIRPLANE, SHIP]
+    AIRPLANE:
+      data_dir: ./data/images_classic/
+      imglist_pth: ./data/benchmark_imglist/mstar/test_airplane.txt
+    SHIP:
+      data_dir: ./data/images_classic/
+      imglist_pth: ./data/benchmark_imglist/mstar/test_ship.txt

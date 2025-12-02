@@ -1,0 +1,60 @@
+import numpy as np
+# 给定的4x4混淆矩阵
+
+confusion_matrix = np.array([
+    [770, 0, 112, 106, 8, 8, 13],
+    [203, 71, 0, 0, 0, 0, 0],
+    [7, 0, 188, 0, 0, 0, 0],
+    [16, 0, 0, 258, 0, 0, 0],
+    [25, 0, 2, 0, 168, 0, 0],
+    [9, 0, 0, 0, 0, 187, 0],
+    [21, 0, 0, 0, 0, 0, 253]
+])
+
+# confusion_matrix = np.array([
+#     [141, 0, 4, 50],
+#     [6, 167, 0, 23],
+#     [0, 0, 150, 46],
+#     [211, 62, 139, 1426]
+# ])
+
+#按照未知类检测的原则来计算TPR和FPR，将未知类当作负类，所有已知类当作正类
+# 提取混淆矩阵的大小
+# n = confusion_matrix.shape[0]
+#
+# # 真阳性（TP）：所有正类的对角元素之和（不包括负类）
+# TP = np.sum(np.diag(confusion_matrix)[:-1])
+#
+# # 假阴性（FN）：正类的总样本数减去真阳性
+# FN = np.sum(confusion_matrix[:-1, -1])
+#
+# # 假阳性（FP）：负类的非对角元素之和
+# FP = np.sum(confusion_matrix[-1, :-1])
+#
+# # 真阴性（TN）：负类的对角元素
+# TN = confusion_matrix[-1, -1]
+
+
+TP = np.sum(np.diag(confusion_matrix)[1:])
+
+# 假阴性（FN）：正类的总样本数减去真阳性
+# FN = np.sum(confusion_matrix[:-1, -1])
+FN = np.sum(confusion_matrix[1:, 0])
+
+# 假阳性（FP）：负类的非对角元素之和
+# FP = np.sum(confusion_matrix[-1, :-1])
+FP = np.sum(confusion_matrix[0, 1:])
+
+# 真阴性（TN）：负类的对角元素
+# TN = confusion_matrix[-1, -1]
+TN = confusion_matrix[0, 0]
+
+# 计算TPR和FPR
+TPR = TP / (TP + FN)
+FPR = FP / (FP + TN)
+
+print(f"TPR: {TPR:.4f}")
+print(f"FPR: {FPR:.4f}")
+print(f"1-FPR: {1-FPR:.4f}")
+
+

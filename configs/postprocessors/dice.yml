@@ -1,0 +1,7 @@
+postprocessor:
+  name: dice
+  APS_mode: False
+  postprocessor_args:
+    p: 50
+  postprocessor_sweep:
+    p_list: [50]

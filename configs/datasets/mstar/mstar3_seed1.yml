@@ -1,0 +1,33 @@
+dataset:
+  name: mstar3_seed1
+  num_classes: 3
+  pre_size: 64
+  image_size: 64
+
+  interpolation: bilinear
+  normalization_type: mstar
+
+  num_workers: '@{num_workers}'
+  num_gpus: '@{num_gpus}'
+  num_machines: '@{num_machines}'
+
+  split_names: [train, val, test]
+
+  train:
+    dataset_class: ImglistDataset
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/osr_mstar3/train/train_mstar10_3_seed1.txt
+    batch_size: 12
+    shuffle: True
+  val:
+    dataset_class: ImglistDataset
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/osr_mstar3/val/val_mstar10_3_seed1.txt
+    batch_size: 12
+    shuffle: False
+  test:
+    dataset_class: ImglistDataset
+    data_dir: ./data/images_classic/
+    imglist_pth: ./data/benchmark_imglist/osr_mstar3/test/test_mstar10_3_id_seed1.txt
+    batch_size: 12
+    shuffle: False
